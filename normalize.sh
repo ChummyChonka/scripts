@@ -1,11 +1,11 @@
 #!/bin/bash
-folder="/your/folder/here"
-log="$folder/log"
+folder="/your/folder/here"                  #I highly suggest to just an absolute path here
+log="$folder/log"                           
 error_log="$folder/errorlog"
-suffix="comp.ogg"
-audio_extensions="(ogg|opus|mp3|m4a|wav)"
-lufs="-23"
-quality="3"
+suffix="comp.ogg"                           #extension of the output filename "filename.$suffix"
+audio_extensions="(ogg|opus|mp3|m4a|wav)"   #audio extensions to look for
+lufs="-23"                                  #loudness level for normalization, -23 LUFS is the recommendation of the European Broadcasting Union
+quality="3"                                 #ffmpeg quality level, higher is better, 3 is default
 
 #create logfiles if they don't exist
 touch $log
@@ -13,9 +13,6 @@ touch $error_log
 
 #converting all spaces in filenames to underscores
 find $folder -depth -name '* *' -execdir bash -c 'for i; do mv "$i" "${i// /_}"; done' _ {} +
-
-#reduce all double underscore to single underscore
-find $folder -depth -name '* *' -execdir bash -c 'for i; do mv "$i" "${i//__/_}"; done' _ {} +
 
 #look for multiple dots in filname, increase counter if filename does not match *.comp.ogg
 counter=0
