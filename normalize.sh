@@ -1,5 +1,5 @@
 #!/bin/bash
-folder="/your/folder/here"                  #I highly suggest to just an absolute path here
+folder="/your/folder/here"                  #I highly suggest to just use an absolute path here
 log="$folder/log"                           
 error_log="$folder/errorlog"
 suffix="comp.ogg"                           #extension of the output filename "filename.$suffix"
